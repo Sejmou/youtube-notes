@@ -1,9 +1,15 @@
-import type { NextPage } from 'next'
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
+import type { NextPage } from 'next';
+import Head from 'next/head';
+import Image from 'next/image';
+import styles from '../styles/Home.module.css';
+import { useEffect } from 'react';
+import { invoke } from '@tauri-apps/api/tauri';
 
 const Home: NextPage = () => {
+  useEffect(() => {
+    invoke('greet', { name: 'World' }).then(console.log).catch(console.error);
+  }, []);
+
   return (
     <div className={styles.container}>
       <Head>
@@ -66,7 +72,7 @@ const Home: NextPage = () => {
         </a>
       </footer>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
