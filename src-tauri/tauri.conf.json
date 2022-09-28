@@ -7,7 +7,7 @@
     "distDir": "../out"
   },
   "package": {
-    "productName": "tauri-nextjs-demo",
+    "productName": "youtube-notes",
     "version": "0.1.0"
   },
   "tauri": {
@@ -58,7 +58,7 @@
         "fullscreen": false,
         "height": 600,
         "resizable": true,
-        "title": "Tauri NextJS Demo",
+        "title": "YouTube Notes",
         "width": 800
       }
     ]
