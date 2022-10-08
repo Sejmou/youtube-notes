@@ -32,7 +32,7 @@ const Home: NextPage = () => {
   };
 
   return (
-    <div>
+    <div className="p-2">
       <Head>
         <title>YouTube Notes</title>
         <meta
@@ -42,13 +42,16 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
-        <h1 className="text-red-900">YouTube Notes</h1>
+      <main className="flex flex-col items-center">
+        <h1>YouTube Notes</h1>
         <p>Here you might some day find a useful application.</p>
         <p>For now, I&apos;m just playing around with stuff.</p>
         <button onClick={clickHandler}>Choose folder</button>
         <p>Current folder: {currentFolder || 'No folder selected.'}</p>
-        <YouTubeLinkInput onLinkDataChange={newData => console.log(newData)} />
+        <YouTubeLinkInput
+          className="max-w-lg"
+          onLinkDataChange={newData => console.log(newData)}
+        />
       </main>
     </div>
   );

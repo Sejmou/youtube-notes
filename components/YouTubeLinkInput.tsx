@@ -11,9 +11,10 @@ import {
 
 type Props = {
   onLinkDataChange: (newData: PlaylistVideoItemsData) => void;
+  className: string;
 };
 
-const YouTubeLinkInput = ({ onLinkDataChange }: Props) => {
+const YouTubeLinkInput = ({ onLinkDataChange, className }: Props) => {
   const [linkInputTouched, setLinkInputTouched] = useState(false);
   const [videoLinkError, setVideoLinkError] = useState(false);
 
@@ -53,6 +54,7 @@ const YouTubeLinkInput = ({ onLinkDataChange }: Props) => {
 
   return (
     <TextField
+      className={className}
       label="Video/Playlist link"
       helperText={
         videoLinkError
