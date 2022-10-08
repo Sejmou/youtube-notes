@@ -1,10 +1,7 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import Image from 'next/image';
-import styles from '../styles/Home.module.css';
 import { useEffect, useState } from 'react';
 import YouTubeLinkInput from '../components/YouTubeLinkInput';
-import { PlaylistVideoItemsData } from '../util/models';
 // cannot import fs and dialog directly, because under the hood this makes use of navigator, which is not avaiable to NextJS when using SSG
 // import { fs, dialog } from '@tauri-apps/api';
 // instead, we need to do this dynamically with import('path/to/module') syntax
@@ -35,7 +32,7 @@ const Home: NextPage = () => {
   };
 
   return (
-    <div className={styles.container}>
+    <div>
       <Head>
         <title>YouTube Notes</title>
         <meta
@@ -45,29 +42,14 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>YouTube Notes</h1>
-        <p className={styles.description}>
-          Here you might some day find a useful application.
-        </p>
+      <main>
+        <h1 className="text-red-900">YouTube Notes</h1>
+        <p>Here you might some day find a useful application.</p>
         <p>For now, I&apos;m just playing around with stuff.</p>
         <button onClick={clickHandler}>Choose folder</button>
         <p>Current folder: {currentFolder || 'No folder selected.'}</p>
         <YouTubeLinkInput onLinkDataChange={newData => console.log(newData)} />
       </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
-        </a>
-      </footer>
     </div>
   );
 };

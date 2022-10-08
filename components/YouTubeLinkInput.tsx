@@ -1,6 +1,6 @@
 import { ChangeEvent, FocusEvent, useCallback, useState } from 'react';
 import { getURLVideoID } from 'ytdl-core';
-import { Box, InputAdornment, SxProps, TextField } from '@mui/material';
+import { InputAdornment, TextField } from '@mui/material';
 import InsertLinkIcon from '@mui/icons-material/InsertLink';
 
 import {
@@ -11,10 +11,9 @@ import {
 
 type Props = {
   onLinkDataChange: (newData: PlaylistVideoItemsData) => void;
-  sx?: SxProps;
 };
 
-const YouTubeLinkInput = ({ onLinkDataChange, sx }: Props) => {
+const YouTubeLinkInput = ({ onLinkDataChange }: Props) => {
   const [linkInputTouched, setLinkInputTouched] = useState(false);
   const [videoLinkError, setVideoLinkError] = useState(false);
 
@@ -53,29 +52,27 @@ const YouTubeLinkInput = ({ onLinkDataChange, sx }: Props) => {
   }, []);
 
   return (
-    <Box sx={sx}>
-      <TextField
-        label="Video/Playlist link"
-        helperText={
-          videoLinkError
-            ? 'Please provide a valid YouTube playlist/video URL'
-            : ''
-        }
-        id="outlined-start-adornment"
-        sx={{ width: '100%' }}
-        InputProps={{
-          startAdornment: (
-            <InputAdornment position="start">
-              <InsertLinkIcon />
-            </InputAdornment>
-          ),
-          error: videoLinkError && linkInputTouched,
-          spellCheck: false,
-        }}
-        onChange={handleLinkInputChange}
-        onBlur={handleLinkBlur}
-      />
-    </Box>
+    <TextField
+      label="Video/Playlist link"
+      helperText={
+        videoLinkError
+          ? 'Please provide a valid YouTube playlist/video URL'
+          : ''
+      }
+      id="outlined-start-adornment"
+      sx={{ width: '100%' }}
+      InputProps={{
+        startAdornment: (
+          <InputAdornment position="start">
+            <InsertLinkIcon />
+          </InputAdornment>
+        ),
+        error: videoLinkError && linkInputTouched,
+        spellCheck: false,
+      }}
+      onChange={handleLinkInputChange}
+      onBlur={handleLinkBlur}
+    />
   );
 };
 export default YouTubeLinkInput;
