@@ -3,6 +3,8 @@ import Head from 'next/head';
 import Image from 'next/image';
 import styles from '../styles/Home.module.css';
 import { useEffect, useState } from 'react';
+import YouTubeLinkInput from '../components/YouTubeLinkInput';
+import { PlaylistVideoItemsData } from '../util/models';
 // cannot import fs and dialog directly, because under the hood this makes use of navigator, which is not avaiable to NextJS when using SSG
 // import { fs, dialog } from '@tauri-apps/api';
 // instead, we need to do this dynamically with import('path/to/module') syntax
@@ -51,6 +53,7 @@ const Home: NextPage = () => {
         <p>For now, I&apos;m just playing around with stuff.</p>
         <button onClick={clickHandler}>Choose folder</button>
         <p>Current folder: {currentFolder || 'No folder selected.'}</p>
+        <YouTubeLinkInput onLinkDataChange={newData => console.log(newData)} />
       </main>
 
       <footer className={styles.footer}>
